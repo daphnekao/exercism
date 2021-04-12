@@ -131,3 +131,15 @@ the final cell.
 one of a kind?
 - What about virtually weightless items that are worth a ton? (e.g., blank
 check, rare baseball card)
+
+
+# To Run
+```
+$ python3 knapsack.py
+```
+
+and
+
+```
+$ pytest knapsack_test.py
+```
