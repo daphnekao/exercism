@@ -51,7 +51,8 @@ My first instinct was to:
     3. Return the maximum value from among them.
 
 This method worked fine when there were only four items, but it got unwieldy
-as the number of items grew.
+as the number of items grew. I also didn't know how to do this without
+importing a math or combinatorics library.
 
 My next idea was to partition the knapsack's weight limit. In the prompt's example where `W = 10`:
 
@@ -63,38 +64,36 @@ My next idea was to partition the knapsack's weight limit. In the prompt's examp
      5 + 5
 ```
 
-and
+There could be a way to solve the smaller problems where the weight limit was
+only 1 or 2 lbs, then use those answers to solve for progressively larger
+weight limits.
 
-```
-9 = 8 + 1
-    7 + 3
-    6 + 2
-    5 + 4
-```
-
-and so on...
-
-There seemed to be a way to solve for when the weight limit was just 1 and 2,
-then recursively construct the solution for larger and larger weight limits.
-
-I got stuck here and did some research. Luckily, this article helped me see
-how I was on the right track but missing a key idea:
+To get unstuck, I did some research. This article helped me see
+how I was on the right track but missing some pieces:
 
 [How to Solve the Knapsack Problem with Dynamic Programming](https://medium.com/@fabianterh/how-to-solve-the-knapsack-problem-with-dynamic-programming-eb88c706d3cf)
 by Fabian Terh
 
-After reading the article, I manually worked out some examples until I understood this particular solution:
+After reading the article, I manually worked out some examples (with mistakes)
+until I understood this particular solution:
 
 ![Scratchwork-1](https://github.com/daphnekao/exercism/blob/main/knapsack/images/Scratchwork-1.JPG)
 ![Scratchwork-2](https://github.com/daphnekao/exercism/blob/main/knapsack/images/Scratchwork-2.JPG)
 
 ## ...but how does it work in practice?
 
-The gist is:
+[[This section is in progress.]]
 
+1. Keep track of your work in a table.
 1. First work with item 1.
 1. Blah
 1. Blah
+What would be the total value if we left it out?
+Ans: Whatever it was before with i - 1 items.
+What would be the total value if we added it?
+Ans: current item's value + max value from the sub-knapsack of weight j - current item's weight.
+We can consider adding it to the knapsack, so compare.
+
 
 |          | weightless | 1 lb | 2 lb | 3 lb | 4 lb | 5 lb | 6 lb | 7 lb |  8b |  9 lb |  10 lb |
 |----------|------------|------|------|------|------|------|------|------|-----|-------|--------|
