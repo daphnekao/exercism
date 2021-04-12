@@ -75,24 +75,39 @@ how I was on the right track but missing some pieces:
 by Fabian Terh
 
 After reading the article, I manually worked out some examples (with mistakes)
-until I understood this particular solution:
+to solidify understanding:
 
 ![Scratchwork-1](https://github.com/daphnekao/exercism/blob/main/knapsack/images/Scratchwork-1.JPG)
 ![Scratchwork-2](https://github.com/daphnekao/exercism/blob/main/knapsack/images/Scratchwork-2.JPG)
 
 ## ...but how does it work in practice?
 
-[[This section is in progress.]]
-
-1. Keep track of your work in a table.
-1. First work with item 1.
-1. Blah
-1. Blah
-What would be the total value if we left it out?
-Ans: Whatever it was before with i - 1 items.
-What would be the total value if we added it?
-Ans: current item's value + max value from the sub-knapsack of weight j - current item's weight.
-We can consider adding it to the knapsack, so compare.
+1. We keep track of our work in an `(n + 1) x (W + 1)` table where `n` is the number of items and `W` is the knapsack's weight limit.
+1. First, we pick up item 1 and ask:
+    1. Is item 1 light enough to fit in a smaller knapsack that holds just 1
+    lb? How about 2 lbs? 8lbs?
+    1. If yes, then add the item to the sub-knapsack. In our example, item 1
+    weighs 5 lbs and is worth $10. That means that it can fit in any knapsack
+    of size 5 lbs or more, and it definitely makes sense to nab those $10
+    rather than leave it behind!
+1. Next, we pick up item 2. It weighs 4 lbs and is worth $40. For each of
+the weight limits between 1 lb and 10 lbs, we do a comparison. For example,
+suppose we're wondering whether to add item 2 to a knapsack that can only hold
+6 lbs.
+    1. Is item 2 even light enough to fit? In this case, yes because
+    `4 lbs < 6 lbs`. If it were too heavy, then we'd leave it behind and note
+    that the 6 lb knapsack's optimal value is the same as it was when only
+    item 1 was in the mix. (Same column, one row up.)
+    1. Since it can fit, now we compute the potential value of combining item
+    2, which weighs 4 lbs, with whatever items maximized the 2 lb knapsack's
+    value (because 4 lbs + 2 lbs = 6 lbs).
+    1. We compare this potential value to the optimal value determined before
+    we even picked up item 2. The worse that could happen is that we maintain
+    the old optimal value, right? (Same column, one row up.) Pick whichever
+    value is greater, and you're on your way!
+    1. Continue picking up items and making these comparisons until you're
+    considering adding the last item to the big knapsack that weighs 10 lbs.
+    Your decision here is the answer to the entire problem!
 
 
 |          | weightless | 1 lb | 2 lb | 3 lb | 4 lb | 5 lb | 6 lb | 7 lb |  8b |  9 lb |  10 lb |
@@ -104,12 +119,15 @@ We can consider adding it to the knapsack, so compare.
 | item 4   | 0          | 0    | 0    | 0    | 50   | 50   | 50   | 50   | 90  | 90    | 90     |
 
 
-# Further Considerations
+# Extensions, Improvements, and Edge Cases
 
 - I think we can shave off some time by computing only the last cell (bottom
 right-hand corner) of the last row rather than the entire row.
-- For a huge knapsack and many items, this brute force approach could take much time and space. Is there a more efficient way to go about it? I suspect we wouldn't need to fill out the entire table but rather key cells that would lead us to the final cell.
+- For a huge knapsack and many items, this brute force approach could consume
+much time and space. Is there a more efficient way? I suspect we wouldn't need
+to fill out the entire table but rather keystone cells that would lead us to
+the final cell.
 - What happens if there are duplicate items and the thief can take more than
 one of a kind?
-
-
+- What about virtually weightless items that are worth a ton? (e.g., blank
+check, rare baseball card)
