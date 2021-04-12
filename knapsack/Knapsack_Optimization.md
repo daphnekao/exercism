@@ -85,22 +85,24 @@ by Fabian Terh
 
 After reading the article, I manually worked out some examples until I understood this particular solution:
 
-![Scratchwork-1](/images/Scratchwork-1.JPG)
-![Scratchwork-2](/images/Scratchwork-2.JPG)
+![Scratchwork-1](https://github.com/daphnekao/exercism/blob/main/knapsack/images/Scratchwork-1.JPG)
+![Scratchwork-2](https://github.com/daphnekao/exercism/blob/main/knapsack/images/Scratchwork-2.JPG)
 
 ## ...but how does it work in practice?
 
 The gist is:
 
-1. Blah
+1. First work with item 1.
 1. Blah
 1. Blah
 
-0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0
-0 | 0 | 0 | 0 | 0 | 10| 10| 10| 10| 10| 10
-0 | 0 | 0 | 0 | 40| 40| 40| 40| 40| 50| 50
-0 | 0 | 0 | 0 | 40| 40| 40| 40| 40| 50| 70
-0 | 0 | 0 | 0 | 50| 50| 50| 50| 90| 90| 90
+|          | weightless | 1 lb | 2 lb | 3 lb | 4 lb | 5 lb | 6 lb | 7 lb |  8b |  9 lb |  10 lb |
+|----------|------------|------|------|------|------|------|------|------|-----|-------|--------|
+| no items | 0          | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0   | 0     | 0      |
+| item 1   | 0          | 0    | 0    | 0    | 0    | 10   | 10   | 10   | 10  | 10    | 10     |
+| item 2   | 0          | 0    | 0    | 0    | 40   | 40   | 40   | 40   | 40  | 50    | 50     |
+| item 3   | 0          | 0    | 0    | 0    | 40   | 40   | 40   | 40   | 40  | 50    | 70     |
+| item 4   | 0          | 0    | 0    | 0    | 50   | 50   | 50   | 50   | 90  | 90    | 90     |
 
 
 # Further Considerations
