@@ -61,7 +61,7 @@ properties, just use the rules for the text type everywhere.
 
 ## Approach
 
-I took the strings from the prompt and several from the unit tests cited in other folks' solutions and drew out the full tree represented by the string.
+I took strings from the prompt the unit tests cited in other folks' solutions and drew out the full tree represented by each string:
 
 [[Insert pictures]]
 
@@ -70,6 +70,8 @@ I took the strings from the prompt and several from the unit tests cited in othe
 ## Extensions, Improvements, and Edge Cases
 - Should be tested on much larger and deeper trees
 - Did not provide for poorly formatted strings.
+- Provide a way to go back up the tree to a previous node.
+- Say whether this node is a variation, and if so, which one.
 
 ## Running Tests
 
