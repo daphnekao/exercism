@@ -63,15 +63,21 @@ properties, just use the rules for the text type everywhere.
 
 I took strings from the prompt the unit tests cited in other folks' solutions and drew out the full tree represented by each string:
 
-[[Insert pictures]]
+![trees-1](https://github.com/daphnekao/exercism/blob/main/SGF-parsing/images/trees-1.jpg)
+![trees-2](https://github.com/daphnekao/exercism/blob/main/SGF-parsing/images/trees-2.jpg)
 
+Next, I designed what a game tree (or subtree) object should look like so that
+I would know what these strings should be parsing to. This is the `Node` class.
+
+Finally, I used string manipulation and regular expression matching to
+separated the property list from the child nodes (with their own property
+lists) and instantiated `Node` objects with those lists.
 
 
 ## Extensions, Improvements, and Edge Cases
-- Should be tested on much larger and deeper trees
-- Did not provide for poorly formatted strings.
-- Provide a way to go back up the tree to a previous node.
-- Say whether this node is a variation, and if so, which one.
+- The parser should be able to identify and raise error messages on invalid strings.
+- It should be tested on much larger and deeper trees
+- The current `Node` class can access its descendants, but it cannot access its predecessor.
 
 ## Running Tests
 
