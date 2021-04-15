@@ -1,7 +1,8 @@
 # Knapsack Optimization
+
 ## Prompt
 
-Copied from [Exercism](https://exercism.io/my/solutions/7f6af07fb971484da38e9cc67312fc25):
+Copied from [Exercism](https://exercism.io):
 
 Bob is a thief. After months of careful planning, he finally manages to crack
 the security systems of a high-class apartment.
@@ -41,9 +42,9 @@ In this example, Bob should take the second and fourth item to maximize his
 value, which, in this case, is 90. He cannot get more than 90 as his knapsack
 has a weight limit of 10.
 
-# Approach
+## Approach
 
-## It sounds so easy in theory...
+### It sounds so easy in theory...
 My first instinct was to:
 
     1. Take all subsets of items weighing up to 10 lbs.
@@ -80,7 +81,7 @@ to solidify understanding:
 ![Scratchwork-1](https://github.com/daphnekao/exercism/blob/main/knapsack/images/Scratchwork-1.JPG)
 ![Scratchwork-2](https://github.com/daphnekao/exercism/blob/main/knapsack/images/Scratchwork-2.JPG)
 
-## ...but how does it work in practice?
+### ...but how does it work in practice?
 
 1. We keep track of our work in an `(n + 1) x (W + 1)` table where `n` is the number of items and `W` is the knapsack's weight limit.
 1. First, we pick up item 1 and ask:
@@ -119,7 +120,7 @@ suppose we're wondering whether to add item 2 to a knapsack that can only hold
 | item 4   | 0          | 0    | 0    | 0    | 50   | 50   | 50   | 50   | 90  | 90    | 90     |
 
 
-# Extensions, Improvements, and Edge Cases
+## Extensions, Improvements, and Edge Cases
 
 - I think we can shave off some time by computing only the last cell (bottom
 right-hand corner) of the last row rather than the entire row.
@@ -133,12 +134,7 @@ one of a kind?
 check, rare baseball card)
 
 
-# To Run
-```
-$ python3 knapsack.py
-```
-
-and
+## Running Tests
 
 ```
 $ pytest knapsack_test.py
