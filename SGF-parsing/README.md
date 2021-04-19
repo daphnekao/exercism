@@ -75,9 +75,11 @@ lists) and instantiated `Node` objects with those lists.
 
 
 ## Extensions, Improvements, and Edge Cases
-- The parser should be able to identify and raise error messages on invalid strings.
-- It should be tested on much larger and deeper trees
-- The current `Node` class can access its descendants, but it cannot access its predecessor.
+- The parser should be able to identify and raise error messages on
+  invalid strings.
+- The parser should be tested on much larger and deeper trees.
+- The current `Node` class can access its descendants, but it cannot access
+  its predecessor.
 
 ## Running Tests
 
